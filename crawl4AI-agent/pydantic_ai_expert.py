@@ -47,8 +47,9 @@ pydantic_ai_expert = Agent(
 )
 
 async def get_embedding(text: str, openai_client: AsyncOpenAI) -> List[float]:
-    """Get embedding vector from OpenAI."""
+    """Get embedding vector from OpenAI/ DeepSeek"""
     try:
+
         response = await openai_client.embeddings.create(
             model="text-embedding-3-small",
             input=text

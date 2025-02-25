@@ -28,7 +28,7 @@ from pydantic_ai_expert import pydantic_ai_expert, PydanticAIDeps
 from dotenv import load_dotenv
 load_dotenv()
 
-openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+openai_client = AsyncOpenAI(api_key="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")
 supabase: Client = Client(
     os.getenv("SUPABASE_URL"),
     os.getenv("SUPABASE_SERVICE_KEY")
