@@ -17,7 +17,15 @@ from supabase import create_client, Client
 load_dotenv()
 
 # Initialize OpenAI and Supabase clients
+#openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Initialize OpenAI client with Deepseek credentials if using Deepseek model
+
+
 openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+deepseek_client = AsyncOpenAI(
+    base_url="https://api.deepseek.com/v1",
+    api_key="sk-f8f304eb008d45bba10b4195f07b6b83"
+)
 supabase: Client = create_client(
     os.getenv("SUPABASE_URL"),
     os.getenv("SUPABASE_SERVICE_KEY")
@@ -87,7 +95,7 @@ async def get_title_and_summary(chunk: str, url: str) -> Dict[str, str]:
     Keep both title and summary concise but informative."""
     
     try:
-        response = await openai_client.chat.completions.create(
+        response = await deepseek_client.chat.completions.create(
             model=os.getenv("LLM_MODEL", "gpt-4o-mini"),
             messages=[
                 {"role": "system", "content": system_prompt},

@@ -64,7 +64,7 @@ multidict==6.1.0
 mypy-extensions==1.0.0
 narwhals==1.21.1
 nltk==3.9.1
-numpy==2.2.1
+numpy
 openai==1.59.6
 opentelemetry-api==1.29.0
 opentelemetry-exporter-otlp-proto-common==1.29.0
@@ -128,7 +128,8 @@ tqdm==4.67.1
 typing-inspect==0.9.0
 typing_extensions==4.12.2
 tzdata==2024.2
-urllib3==2.3.0
+#urllib3==2.3.0
+urllib3=1.26.15
 watchdog==6.0.0
 websockets==13.1
 wrapt==1.17.1

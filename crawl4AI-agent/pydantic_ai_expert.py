@@ -15,7 +15,8 @@ from typing import List
 
 load_dotenv()
 
-llm = os.getenv('LLM_MODEL', 'gpt-4o-mini')
+#llm = os.getenv('LLM_MODEL', 'gpt-4o')
+llm = "gpt-4o"
 model = OpenAIModel(llm)
 
 logfire.configure(send_to_logfire='if-token-present')
@@ -47,13 +48,13 @@ pydantic_ai_expert = Agent(
 )
 
 async def get_embedding(text: str, openai_client: AsyncOpenAI) -> List[float]:
-    """Get embedding vector from OpenAI/ DeepSeek"""
+    """Get embedding vector from OpenAI"""
     try:
-
+       
         response = await openai_client.embeddings.create(
             model="text-embedding-3-small",
             input=text
-        )
+            )
         return response.data[0].embedding
     except Exception as e:
         print(f"Error getting embedding: {e}")
