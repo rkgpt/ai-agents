@@ -23,8 +23,8 @@ load_dotenv()
 
 openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 deepseek_client = AsyncOpenAI(
-    base_url="https://api.deepseek.com/v1",
-    api_key="sk-f8f304eb008d45bba10b4195f07b6b83"
+    base_url=os.getenv("DEEPSEEK_BASE_URL"),  
+    api_key=os.getenv("DEEPSEEK_API_KEY")
 )
 supabase: Client = create_client(
     os.getenv("SUPABASE_URL"),
